@@ -1,0 +1,27 @@
+server:
+  applicationConnectors:
+  - type: http
+    port: 12082
+  adminConnectors:
+  - type: http
+    port: 12083
+  requestLog:
+    appenders:
+    - type: file
+      archive: true
+      currentLogFilename: /var/log/shubham/shubham-access.log
+      archivedLogFilenamePattern: /var/log/shubham/shubham-access-%d{yyyy-MM-dd}-%i.log.gz
+      archivedFileCount: 10
+      maxFileSize: 10MB
+      timeZone: Asia/Kolkata
+
+cassandraClientConfig:
+    clusterName: Shubham
+    hostName: 127.0.0.1
+    port: 9160
+    keySpace: shubham
+    replicationFactor: 2
+    TimeToLive: 720000
+    useServerSideCompression: false
+    useClientSideCompression: false
+    cacheAllKeys: false
